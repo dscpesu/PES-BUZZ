@@ -13,11 +13,11 @@ class NewsItemCard extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         leading: Container(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Image.network(newsItem.imageUrl),
         ),
         title: Text(newsItem.headline,
-            style: TextStyle(fontWeight: FontWeight.bold)),
+            style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text('${newsItem.clubName} | ${newsItem.date}'),
         onTap: () {
           Navigator.push(
