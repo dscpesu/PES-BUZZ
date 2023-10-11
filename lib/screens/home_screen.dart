@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PES Buzz'),
+        centerTitle: true,
         backgroundColor: const Color(0xFF4169E1),
       ),
       body: PageView(
