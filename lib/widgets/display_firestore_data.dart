@@ -23,11 +23,7 @@ class DisplayFirestoreData extends StatelessWidget {
             ),
           ));
         } else if (snapshot.data == null) {
-          return const Center(child: Text('No events yet :('));
-        } else if (snapshot.hasError) {
-          return const SizedBox(
-            height: 0,
-          );
+          return const Center(child: Text('An error occurred.'));
         } else {
           return ListViewBuilderByTab(
               category: category, newsItems: snapshot.data!);
