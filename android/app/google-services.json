@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "460920808849",
+    "project_id": "pes-buzz",
+    "storage_bucket": "pes-buzz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460920808849:android:c42126dc99119d1992a630",
+        "android_client_info": {
+          "package_name": "com.example.pesbuzz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUCUxxOF-2piBk4nn8Za2oa2Uq7bDDe7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
