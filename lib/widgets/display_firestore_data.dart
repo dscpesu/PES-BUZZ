@@ -17,9 +17,9 @@ class DisplayFirestoreData extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return (const Center(
-            child: SpinKitSpinningLines(
+            child: SpinKitDualRing(
               color: Color(0xFF4169E1),
-              size: 50.0,
+              size: 30.0,
             ),
           ));
         } else if (snapshot.data == null) {
