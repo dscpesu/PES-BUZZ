@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return FlutterSplashScreen.gif(
       backgroundColor: const Color(0xffe9ffe7),
-      gifPath: 'assets/PesBuzzGif.gif',
+      gifPath: 'assets/animations/PesBuzzGif.gif',
       gifWidth: 700,
       gifHeight: 700,
       duration: const Duration(seconds: 3),
