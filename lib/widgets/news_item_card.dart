@@ -19,27 +19,26 @@ class NewsItemCard extends StatelessWidget {
           ),
         );
       },
-      child: ImageContainer(
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.all(50),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 10,
-            offset: Offset(1, 1),
-            color: Colors.grey,
+      child: Row(
+        children: [
+          ImageContainer(
+            // padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(20),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            boxShadow: const [
+              BoxShadow(
+                blurRadius: 10,
+                offset: Offset(1, 1),
+                color: Colors.grey,
+              ),
+            ],
+            width: MediaQuery.of(context).size.width * 0.3,
+            height: MediaQuery.of(context).size.height * 0.15,
+            imageUrl: newsItem.imageUrl,
           ),
-        ],
-        width: MediaQuery.of(context).size.width * 0.4,
-        height: MediaQuery.of(context).size.height * 0.4,
-        imageUrl: newsItem.imageUrl,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * 0.75,
-              // ),
+          Flexible(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
                 // height: MediaQuery.of(context).size.height * 0.4,
                 padding: const EdgeInsets.all(5),
@@ -57,6 +56,7 @@ class NewsItemCard extends StatelessWidget {
               ),
               Text(
                 newsItem.headline,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     fontWeight: FontWeight.bold,
                     height: 1.25,
@@ -64,33 +64,16 @@ class NewsItemCard extends StatelessWidget {
               ),
               Text(
                 newsItem.date,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.bold,
                     height: 1.25,
                     color: Colors.black),
               ),
             ]),
+          ),
+        ],
       ),
     );
-    // return Card(
-    //   color: Colors.white,
-    //   child: ListTile(
-    //     leading: Container(
-    //       padding: const EdgeInsets.all(8.0),
-    //       child: Image.network(newsItem.imageUrl),
-    //     ),
-    //     title: Text(newsItem.headline,
-    //         style: const TextStyle(fontWeight: FontWeight.bold)),
-    //     subtitle: Text('${newsItem.clubName} | ${newsItem.date}'),
-    //     onTap: () {
-    //       Navigator.push(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (context) => EventDetailScreen(newsItem: newsItem),
-    //         ),
-    //       );
-    //     },
-    //   ),
-    // );
   }
 }
