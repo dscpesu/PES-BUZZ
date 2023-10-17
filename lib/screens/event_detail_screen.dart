@@ -96,18 +96,16 @@ class EventDetailScreen extends StatelessWidget {
                       ),
                       // const SizedBox(height: 20),
                       const SizedBox(height: 10),
-                      Flexible(
-                        child: Text(
-                          newsItem.headline,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.25,
-                                  color: Colors.black),
-                        ),
+                      Text(
+                        newsItem.headline,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(
+                                fontWeight: FontWeight.bold,
+                                height: 1.25,
+                                color: Colors.black),
                       ),
                       const SizedBox(
                         height: 10,
