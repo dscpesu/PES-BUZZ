@@ -11,6 +11,7 @@ class ListViewBuilderByTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: newsItems.length,
       itemBuilder: (context, index) {
         final newsItem = newsItems[index];
