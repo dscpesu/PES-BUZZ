@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1500), () {
+    Future.delayed(const Duration(milliseconds: 2500), () {
       _navigateToNextScreen();
     });
   }
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: child,
             );
           },
-          transitionDuration: const Duration(milliseconds: 500)),
+          transitionDuration: const Duration(milliseconds: 1000)),
     );
   }
 

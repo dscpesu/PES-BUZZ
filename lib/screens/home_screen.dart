@@ -14,8 +14,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PES Buzz'),
-        backgroundColor: const Color(0xFF4169E1),
+        title: const Text('PES Buzz',
+        style:TextStyle(
+          color: Colors.black,
+        ),
+        ),
+        backgroundColor: const Color(0xffe9ffe7), 
       ),
       body: PageView(
         controller: pageController,
@@ -28,9 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
           DisplayFirestoreData(category: 'Trendy'),
           DisplayFirestoreData(category: 'Sports'),
           DisplayFirestoreData(category: 'Department'),
+          DisplayFirestoreData(category: 'Bookmarks'),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.blueGrey,
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -44,19 +50,27 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.trending_up),
+            icon: Icon(Icons.trending_up,
+            size: 30.0,),
             label: 'Trendy',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sports_soccer),
-            label: 'Sports',
+            icon: Icon(Icons.event,
+            size: 30.0,),
+            label: 'Events',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.school_outlined,
+            size: 30.0,),
             label: 'Department',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark_outline,
+            size: 30.0,),
+            label: 'Bookmarks',
+          ),
         ],
-      ),
+        fixedColor: Colors.black      ),
     );
   }
 }
