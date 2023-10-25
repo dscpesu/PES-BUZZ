@@ -55,7 +55,7 @@ class EventDetailScreen extends StatelessWidget {
                 ),
                 child: ListView(
                     physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                     children: [
                       const SizedBox(height: 10),
                       Row(
@@ -63,59 +63,54 @@ class EventDetailScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Flexible(
-                            child: Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Colors.grey,
-                              ),
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                newsItem.clubName,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        height: 1.25,
-                                        color: Colors.black),
-                              ),
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              newsItem.clubName,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 18,
+                                      color: Colors.black),
                             ),
                           ),
                           Text(
                             overflow: TextOverflow.ellipsis,
                             newsItem.date,
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    // fontWeight: FontWeight.bold,
-                                    height: 1.25,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15,
                                     color: Colors.black),
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 20),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 25),
                       Text(
                         newsItem.headline,
-                        overflow: TextOverflow.ellipsis,
+                        overflow: TextOverflow.visible,
                         style: Theme.of(context)
                             .textTheme
-                            .headlineSmall!
+                            .headlineMedium!
                             .copyWith(
-                                fontWeight: FontWeight.bold,
-                                height: 1.25,
-                                color: Colors.black),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              height: 1.25,
+                              color: Colors.black,
+                            ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       Text(
                         newsItem.description,
-                        overflow: TextOverflow.ellipsis,
+                        overflow: TextOverflow.visible,
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                            fontSize: 18,
                             height: 1.25,
                             color: Colors.black),
                       ),

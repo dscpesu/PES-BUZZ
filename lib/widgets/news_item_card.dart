@@ -23,11 +23,11 @@ class NewsItemCard extends StatelessWidget {
         children: [
           ImageContainer(
             // padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             boxShadow: const [
               BoxShadow(
-                blurRadius: 10,
+                blurRadius: 5,
                 offset: Offset(1, 1),
                 color: Colors.grey,
               ),
@@ -37,40 +37,40 @@ class NewsItemCard extends StatelessWidget {
             imageUrl: newsItem.imageUrl,
           ),
           Flexible(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Container(
-                // height: MediaQuery.of(context).size.height * 0.4,
-                padding: const EdgeInsets.all(5),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.grey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  newsItem.headline,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                        height: 1.5,
+                        color: Colors.black,
+                      ),
                 ),
-                child: Text(
+                Text(
                   newsItem.clubName,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      height: 1.25,
-                      color: Colors.black),
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        height: 1,
+                        color: const Color(0xff7B6C6C),
+                      ),
                 ),
-              ),
-              Text(
-                newsItem.headline,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    height: 1.25,
-                    color: Colors.black),
-              ),
-              Text(
-                newsItem.date,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    height: 1.25,
-                    color: Colors.black),
-              ),
-            ]),
+                Text(
+                  newsItem.date,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        height: 1.25,
+                        color: const Color(0xff7B6C6C),
+                      ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
