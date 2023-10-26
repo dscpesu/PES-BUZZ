@@ -114,6 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.blueGrey,
+        selectedItemColor: Colors.black,
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -137,6 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             label: 'Department',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark_outline),
+            label: 'Bookmarks',
           ),
         ],
       ),
