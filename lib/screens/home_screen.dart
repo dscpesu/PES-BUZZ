@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '/widgets/display_firestore_data.dart';
+import '/widgets/bottom_bar.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -10,6 +14,105 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController pageController = PageController();
   int currentIndex = 0;
+
+  //Callback to handle when bottom bar is tapped - the below function is passed as a parameter to bottom_bar.dart
+  void onTabTapped(int index) {
+    setState(() {
+      currentIndex = index;
+      pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 20),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xffE2F9EE),
+        leadingWidth: 100,
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 0),
+          child: Image(
+              image: AssetImage(
+            'assets/logos/PesBuzzLogo.png',
+          )),
+        ),
+        title: Text(
+          'PES Buzz',
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const FaIcon(
+              FontAwesomeIcons.user,
+              color: Colors.black,
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xffE2F9EE),
+                Color.fromARGB(255, 218, 229, 194),
+              ],
+              stops: [
+                0.25,
+                1.0
+              ]),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 10, left: 20, right: 20, bottom: 10),
+              child: Text(
+                '${DateTime.now().day.toString().padLeft(2, '0')}th ${_getMonth(DateTime.now().month)}, ${DateTime.now().year}',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(
+              child: PageView(
+                controller: pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                children: const <Widget>[
+                  DisplayFirestoreData(category: 'Trendy'),
+                  DisplayFirestoreData(category: 'Sports'),
+                  DisplayFirestoreData(category: 'Department'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //BottomBar is now under bottom_bar.dart in widgets folder
+      bottomNavigationBar: BottomBar(
+        currentIndex: currentIndex,
+        onTabTapped: onTabTapped,
+      ),
+    );
+  }
 
   String _getMonth(int month) {
     switch (month) {
@@ -40,112 +143,5 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         return 'Unknown';
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffE2F9EE),
-        leadingWidth: 65,
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 5.0),
-          child: Image(image: AssetImage('assets/logos/PesBuzzLogo.png')),
-        ),
-        title: const Text(
-          'PES Buzz',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.user,
-              color: Colors.black,
-            ),
-          )
-        ],
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xffE2F9EE),
-              Color(0xffFBFBD4),
-            ],
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 10, left: 20, right: 20, bottom: 10),
-              child: Text(
-                '${DateTime.now().day.toString().padLeft(2, '0')}th ${_getMonth(DateTime.now().month)}, ${DateTime.now().year}',
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Expanded(
-              child: PageView(
-                controller: pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                children: <Widget>[
-                  DisplayFirestoreData(category: 'Trendy'),
-                  DisplayFirestoreData(category: 'Sports'),
-                  DisplayFirestoreData(category: 'Department'),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.blueGrey,
-        selectedItemColor: Colors.black,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-            pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.ease,
-            );
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.trending_up),
-            label: 'Trendy',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sports_soccer),
-            label: 'Sports',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Department',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_outline),
-            label: 'Bookmarks',
-          ),
-        ],
-      ),
-    );
   }
 }

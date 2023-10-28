@@ -6,7 +6,7 @@ class ListViewBuilderByTab extends StatelessWidget {
   final String category;
   final List<NewsItemModel> newsItems;
 
-  ListViewBuilderByTab({required this.category, required this.newsItems});
+  const ListViewBuilderByTab({super.key, required this.category, required this.newsItems});
 
   @override
   Widget build(BuildContext context) {
