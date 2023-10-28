@@ -15,19 +15,26 @@ class DisplayFirestoreData extends StatelessWidget {
     return FutureBuilder<List<NewsItemModel>>(
       future: firestoreService.fetchNewsItemsByCategory(category),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return (const Center(
-            child: SpinKitDualRing(
-              color: Color(0xFF4169E1),
-              size: 30.0,
-            ),
-          ));
-        } else if (snapshot.data == null) {
-          return const Center(child: Text('An error occurred.'));
-        } else {
-          return ListViewBuilderByTab(
-              category: category, newsItems: snapshot.data!);
-        }
+        return AnimatedSwitcher(
+          duration: Duration(milliseconds: 650),
+          child: snapshot.connectionState == ConnectionState.waiting
+              ? Center(
+                  // key: UniqueKey(), // Do not use rn, it will cause the widget to rebuild and will trigger a dirty rebuild- Shubh
+                  child: SpinKitDualRing(
+                    color: Color(0xFF4169E1),
+                    size: 30.0,
+                  ),
+                )
+              : snapshot.hasError
+                  ? Center(
+                      //   key: UniqueKey(), // Use UniqueKey for the error widget
+                      child: Text('An error occurred: ${snapshot.error}'),
+                    )
+                  : ListViewBuilderByTab(
+                      category: category,
+                      newsItems: snapshot.data ?? [],
+                    ),
+        );
       },
     );
   }
