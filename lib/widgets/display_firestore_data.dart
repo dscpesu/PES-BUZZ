@@ -4,30 +4,43 @@ import '/services/firestore_service.dart';
 import '/widgets/list_view_builder_tab.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class DisplayFirestoreData extends StatelessWidget {
-  final FirestoreService firestoreService = FirestoreService();
+class DisplayFirestoreData extends StatefulWidget {
   final String category;
 
-  DisplayFirestoreData({required this.category});
+  const DisplayFirestoreData({super.key, required this.category});
+
+  @override
+  State<DisplayFirestoreData> createState() => _DisplayFirestoreDataState();
+}
+
+class _DisplayFirestoreDataState extends State<DisplayFirestoreData> {
+  final FirestoreService firestoreService = FirestoreService();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<NewsItemModel>>(
-      future: firestoreService.fetchNewsItemsByCategory(category),
+      future: firestoreService.fetchNewsItemsByCategory(widget.category),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return (const Center(
-            child: SpinKitDualRing(
-              color: Color(0xFF4169E1),
-              size: 30.0,
-            ),
-          ));
-        } else if (snapshot.data == null) {
-          return const Center(child: Text('An error occurred.'));
-        } else {
-          return ListViewBuilderByTab(
-              category: category, newsItems: snapshot.data!);
-        }
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: snapshot.connectionState == ConnectionState.waiting
+              ? Center(
+                  key: UniqueKey(), //
+                  child: const SpinKitDualRing(
+                    color: Colors.black,
+                    size: 30.0,
+                  ),
+                )
+              : snapshot.hasError
+                  ? Center(
+                      key: UniqueKey(), // Use UniqueKey for the error widget
+                      child: Text('An error occurred: ${snapshot.error}'),
+                    )
+                  : ListViewBuilderByTab(
+                      category: widget.category,
+                      newsItems: snapshot.data ?? [],
+                    ),
+        );
       },
     );
   }
