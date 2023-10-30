@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pesbuzz/theme/palette.dart';
 import 'package:pesbuzz/widgets/image_container.dart';
 import '/models/news_item_model.dart';
 import '/screens/event_detail_screen.dart';
@@ -25,11 +26,11 @@ class NewsItemCard extends StatelessWidget {
             // padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             borderRadius: const BorderRadius.all(Radius.circular(20)),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 5,
-                offset: Offset(1, 1),
-                color: Colors.grey,
+                offset: const Offset(1, 1),
+                color: AppColors.greyColor,
               ),
             ],
             width: MediaQuery.of(context).size.width * 0.3,
@@ -47,7 +48,7 @@ class NewsItemCard extends StatelessWidget {
                         fontSize: 21,
                         fontWeight: FontWeight.bold,
                         height: 1.5,
-                        color: Colors.black,
+                        color: AppColors.blackColor,
                       ),
                 ),
                 Text(
@@ -57,7 +58,7 @@ class NewsItemCard extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         fontSize: 18,
                         height: 1,
-                        color: const Color(0xff7B6C6C),
+                        color: AppColors.subHeadlineColor,
                       ),
                 ),
                 Text(
@@ -66,7 +67,7 @@ class NewsItemCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontWeight: FontWeight.bold,
                         height: 1.25,
-                        color: const Color(0xff7B6C6C),
+                        color: AppColors.subHeadlineColor,
                       ),
                 ),
               ],
