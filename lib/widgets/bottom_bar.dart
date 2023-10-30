@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pesbuzz/theme/palette.dart';
 
 class BottomBar extends StatelessWidget {
   final int currentIndex;
@@ -13,9 +14,9 @@ class BottomBar extends StatelessWidget {
     return BottomNavigationBar(
       type: BottomNavigationBarType
           .fixed, // Ensure the labels are always displayed
-      backgroundColor: Color.fromARGB(255, 34, 30, 30),
-      unselectedItemColor: Colors.blueGrey,
-      selectedItemColor: Colors.white,
+      backgroundColor: AppColors.bottomNavBarColor,
+      unselectedItemColor: AppColors.blueGreyColor,
+      selectedItemColor: AppColors.whiteColor,
       currentIndex: currentIndex,
       onTap: onTabTapped,
       items: const [

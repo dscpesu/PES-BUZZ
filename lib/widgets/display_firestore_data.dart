@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pesbuzz/theme/palette.dart';
 import '/models/news_item_model.dart';
 import '/services/firestore_service.dart';
 import '/widgets/list_view_builder_tab.dart';
@@ -26,8 +27,8 @@ class _DisplayFirestoreDataState extends State<DisplayFirestoreData> {
           child: snapshot.connectionState == ConnectionState.waiting
               ? Center(
                   key: UniqueKey(), //
-                  child: const SpinKitDualRing(
-                    color: Colors.black,
+                  child: SpinKitDualRing(
+                    color: AppColors.blackColor,
                     size: 30.0,
                   ),
                 )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pesbuzz/theme/palette.dart';
 import '/widgets/display_firestore_data.dart';
 import '/widgets/bottom_bar.dart';
 
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xffE2F9EE),
+        backgroundColor: AppColors.bgGradientStartColor,
         leadingWidth: 100,
         leading: const Padding(
           padding: EdgeInsets.only(left: 0),
@@ -43,36 +44,29 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'PES Buzz',
           style: GoogleFonts.poppins(
-            textStyle: const TextStyle(
-              color: Colors.black,
+            textStyle: TextStyle(
+              color: AppColors.blackColor,
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.user,
-              color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: IconButton(
+              onPressed: () {},
+              icon: FaIcon(
+                FontAwesomeIcons.user,
+                color: AppColors.blackColor,
+              ),
             ),
           )
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xffE2F9EE),
-                Color.fromARGB(255, 218, 229, 194),
-              ],
-              stops: [
-                0.25,
-                1.0
-              ]),
+        decoration: BoxDecoration(
+          gradient: AppColors.scaffoldBgGradient,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
