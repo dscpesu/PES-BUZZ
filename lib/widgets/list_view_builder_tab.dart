@@ -6,11 +6,14 @@ class ListViewBuilderByTab extends StatelessWidget {
   final String category;
   final List<NewsItemModel> newsItems;
 
-  const ListViewBuilderByTab({super.key, required this.category, required this.newsItems});
+  const ListViewBuilderByTab(
+      {Key? key, required this.category, required this.newsItems})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: key, // Add a key to the ListViewBuilderByTab
       physics: const BouncingScrollPhysics(),
       itemCount: newsItems.length,
       itemBuilder: (context, index) {
