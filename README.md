@@ -57,6 +57,14 @@ Welcome to PES-BUZZ, your ultimate college newsfeed and updates app. Stay in the
 **Purpose:**
 PES-BUZZ aims to foster community engagement, keep everyone informed, and encourage active participation in college activities.
 
+
+## App Demo
+
+
+https://github.com/dscpesu/PES-BUZZ/assets/110471762/d2449f67-9dd6-44e6-9038-e1a49652f4eb
+
+
+
 ## 🧮 How to Contribute
 
 Ready to make your first open-source contribution? Here's how:
