@@ -18,7 +18,6 @@
 ![Github Repo Size](https://img.shields.io/github/repo-size/dscpesu/PES-BUZZ?style=for-the-badge&color=aqua)
 
 </div>
-
 ---
 
 ## 🔴 Welcome to PES-BUZZ!
